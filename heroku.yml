@@ -4,8 +4,6 @@ build:
     config:
         SALESFORCE_CLI_VERSION: 7.75.1
         DOCKER_IMAGE_VERSION: 0.0.2
-    command:
-        - scripts/publish.js
 
 release:
     image: worker
