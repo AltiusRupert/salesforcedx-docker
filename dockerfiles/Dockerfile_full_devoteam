@@ -43,3 +43,5 @@ RUN echo 'y' | sfdx  plugins:install sfpowerkit
 #RUN echo 'y' | sfdx  plugins:install @salesforce/sfdx-scanner
 #RUN echo 'y' | sfdx  plugins:install sfdx-changeset
 #RUN echo 'y' | sfdx  plugins:install sfdx-experiences-plugin
+RUN sfdx -v
+RUN sfdx plugins --core

@@ -3,7 +3,7 @@ build:
         web: dockerfiles/Dockerfile_full_devoteam
     config:
         SALESFORCE_CLI_VERSION: 7.75.1
-        DOCKER_IMAGE_VERSION: 0.0.3
+        DOCKER_IMAGE_VERSION: 0.0.4
 
 release:
     image: web
