@@ -116,7 +116,7 @@ if (/main/.test(currentBranch)) {
     */
 
     shell.exec(
-        `docker tag ${DOCKER_HUB_REPOSITORY}:${SALESFORCE_CLI_VERSION}-full-devoteam ${DOCKER_HUB_REPOSITORY}:latest-full-devoteam`
+        `docker tag ${DOCKER_HUB_REPOSITORY}:${DOCKER_IMAGE_VERSION}-full-devoteam ${DOCKER_HUB_REPOSITORY}:latest-full-devoteam`
     );
     shell.exec(`docker push ${DOCKER_HUB_REPOSITORY}:latest-full-devoteam`);
 }
