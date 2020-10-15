@@ -6,5 +6,6 @@ build:
         DOCKER_IMAGE_VERSION: 0.0.2
     command:
         - scripts/publish.js
+
 release:
     image: worker
