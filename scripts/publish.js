@@ -58,15 +58,17 @@ if (checkTags.includes(DOCKER_IMAGE_VERSION)) {
 // Proceed to build using the right CLI version
 
 /* SLIM VERSION */
-const slim_dockerBuildExitCode = shell
-    .exec
-    //`docker build --file ./dockerfiles/Dockerfile_slim --build-arg SALESFORCE_CLI_VERSION=${SALESFORCE_CLI_VERSION} --tag ${DOCKER_HUB_REPOSITORY}:${DOCKER_IMAGE_VERSION}-slim --no-cache .`
-    ();
+/*
+const slim_dockerBuildExitCode = shell.exec(
+    `docker build --file ./dockerfiles/Dockerfile_slim --build-arg SALESFORCE_CLI_VERSION=${SALESFORCE_CLI_VERSION} --tag ${DOCKER_HUB_REPOSITORY}:${DOCKER_IMAGE_VERSION}-slim --no-cache .`
+);
+*/
 /* FULL VERSION */
-const full_dockerBuildExitCode = shell
-    .exec
-    //`docker build --file ./dockerfiles/Dockerfile_full --build-arg SALESFORCE_CLI_VERSION=${SALESFORCE_CLI_VERSION} --tag ${DOCKER_HUB_REPOSITORY}:${DOCKER_IMAGE_VERSION}-full --no-cache .`
-    ();
+/*
+const full_dockerBuildExitCode = shell.exec(
+    `docker build --file ./dockerfiles/Dockerfile_full --build-arg SALESFORCE_CLI_VERSION=${SALESFORCE_CLI_VERSION} --tag ${DOCKER_HUB_REPOSITORY}:${DOCKER_IMAGE_VERSION}-full --no-cache .`
+);
+*/
 /* FULL DEVOTEAM VERSION */
 const full_devoteam_dockerBuildExitCode = shell.exec(
     `docker build --file ./dockerfiles/Dockerfile_full_devoteam --build-arg SALESFORCE_CLI_VERSION=${SALESFORCE_CLI_VERSION} --tag ${DOCKER_HUB_REPOSITORY}:${DOCKER_IMAGE_VERSION}-full-devoteam --no-cache .`
@@ -75,19 +77,20 @@ const full_devoteam_dockerBuildExitCode = shell.exec(
 // Push to the Docker Hub Registry
 
 /* SLIM VERSION */
+/*
 const slim_dockerPushExitCode = shell.exec(
-    `echo "docker push Dockerfile_slim"`
-    //`docker push ${DOCKER_HUB_REPOSITORY}:${DOCKER_IMAGE_VERSION}-slim`
+    `docker push ${DOCKER_HUB_REPOSITORY}:${DOCKER_IMAGE_VERSION}-slim`
 );
+*/
 /* FULL VERSION */
+/*
 const full_dockerPushExitCode = shell.exec(
-    `echo "docker push Dockerfile_full"`
-    //`docker push ${DOCKER_HUB_REPOSITORY}:${DOCKER_IMAGE_VERSION}-full`
+    `docker push ${DOCKER_HUB_REPOSITORY}:${DOCKER_IMAGE_VERSION}-full`
 );
+*/
 /* FULL DEVOTEAM VERSION */
 const full_devoteam_dockerPushExitCode = shell.exec(
-    `echo "##### docker push full-devoteam"`
-    //`docker push ${DOCKER_HUB_REPOSITORY}:${DOCKER_IMAGE_VERSION}-full-devoteam`
+    `docker push ${DOCKER_HUB_REPOSITORY}:${DOCKER_IMAGE_VERSION}-full-devoteam`
 );
 
 // If we are on the main branch, also update the latest tag on Dockerhub
@@ -111,13 +114,13 @@ if (/main/.test(currentBranch)) {
     */
 
     shell.exec(
-        `echo "##### docker tag latest-full-devoteam"`//`docker tag ${DOCKER_HUB_REPOSITORY}:${SALESFORCE_CLI_VERSION}-full-devoteam ${DOCKER_HUB_REPOSITORY}:latest-full-devoteam`
-        `echo "##### docker push latest-full-devoteam"`
+        `docker tag ${DOCKER_HUB_REPOSITORY}:${SALESFORCE_CLI_VERSION}-full-devoteam ${DOCKER_HUB_REPOSITORY}:latest-full-devoteam`
     );
     //shell.exec(`docker push ${DOCKER_HUB_REPOSITORY}:latest-full-devoteam`);
 }
 
 // Create a git tag if we are publishing a specific version
+/*
 if (!/latest/.test(DOCKER_IMAGE_VERSION)) {
     shell.exec(`echo ${DOCKER_IMAGE_VERSION} > version.txt`);
     shell.exec(`git add version.txt`);
@@ -126,3 +129,4 @@ if (!/latest/.test(DOCKER_IMAGE_VERSION)) {
     shell.exec(`git tag ${DOCKER_IMAGE_VERSION}`);
     shell.exec(`git push --tags`);
 }
+*/
