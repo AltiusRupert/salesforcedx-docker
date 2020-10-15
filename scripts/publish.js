@@ -57,21 +57,23 @@ if (checkTags.includes(DOCKER_IMAGE_VERSION)) {
 
 // Proceed to build using the right CLI version
 
-/* SLIM VERSION */
 /*
+// SLIM VERSION
+
 const slim_dockerBuildExitCode = shell.exec(
-    `docker build --file ./dockerfiles/Dockerfile_slim --build-arg SALESFORCE_CLI_VERSION=${SALESFORCE_CLI_VERSION} --tag ${DOCKER_HUB_REPOSITORY}:${DOCKER_IMAGE_VERSION}-slim --no-cache .`
+    `docker build --file dockerfiles/Dockerfile_slim --build-arg SALESFORCE_CLI_VERSION=${SALESFORCE_CLI_VERSION} --tag ${DOCKER_HUB_REPOSITORY}:${DOCKER_IMAGE_VERSION}-slim --no-cache .`
 );
 */
-/* FULL VERSION */
+
+// FULL VERSION
 /*
 const full_dockerBuildExitCode = shell.exec(
-    `docker build --file ./dockerfiles/Dockerfile_full --build-arg SALESFORCE_CLI_VERSION=${SALESFORCE_CLI_VERSION} --tag ${DOCKER_HUB_REPOSITORY}:${DOCKER_IMAGE_VERSION}-full --no-cache .`
+    `docker build --file dockerfiles/Dockerfile_full --build-arg SALESFORCE_CLI_VERSION=${SALESFORCE_CLI_VERSION} --tag ${DOCKER_HUB_REPOSITORY}:${DOCKER_IMAGE_VERSION}-full --no-cache .`
 );
 */
 /* FULL DEVOTEAM VERSION */
 const full_devoteam_dockerBuildExitCode = shell.exec(
-    `docker build --file ./dockerfiles/Dockerfile_full_devoteam --build-arg SALESFORCE_CLI_VERSION=${SALESFORCE_CLI_VERSION} --tag ${DOCKER_HUB_REPOSITORY}:${DOCKER_IMAGE_VERSION}-full-devoteam --no-cache .`
+    `docker build --file dockerfiles/Dockerfile_full_devoteam --build-arg SALESFORCE_CLI_VERSION=${SALESFORCE_CLI_VERSION} --tag ${DOCKER_HUB_REPOSITORY}:${DOCKER_IMAGE_VERSION}-full-devoteam --no-cache .`
 );
 
 // Push to the Docker Hub Registry
@@ -116,11 +118,10 @@ if (/main/.test(currentBranch)) {
     shell.exec(
         `docker tag ${DOCKER_HUB_REPOSITORY}:${SALESFORCE_CLI_VERSION}-full-devoteam ${DOCKER_HUB_REPOSITORY}:latest-full-devoteam`
     );
-    //shell.exec(`docker push ${DOCKER_HUB_REPOSITORY}:latest-full-devoteam`);
+    shell.exec(`docker push ${DOCKER_HUB_REPOSITORY}:latest-full-devoteam`);
 }
 
 // Create a git tag if we are publishing a specific version
-/*
 if (!/latest/.test(DOCKER_IMAGE_VERSION)) {
     shell.exec(`echo ${DOCKER_IMAGE_VERSION} > version.txt`);
     shell.exec(`git add version.txt`);
@@ -129,4 +130,3 @@ if (!/latest/.test(DOCKER_IMAGE_VERSION)) {
     shell.exec(`git tag ${DOCKER_IMAGE_VERSION}`);
     shell.exec(`git push --tags`);
 }
-*/

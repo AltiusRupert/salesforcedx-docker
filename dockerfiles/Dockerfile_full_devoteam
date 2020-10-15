@@ -24,8 +24,8 @@ ENV SFDX_CONTAINER_MODE true
 ENV DEBIAN_FRONTEND=dialog
 ENV SHELL /bin/bash
 
-RUN sfdx  plugins:install sfpowerkit
-RUN sfdx  plugins:install shane-sfdx-plugins
-RUN sfdx  plugins:install @salesforce/sfdx-scanner
-RUN sfdx  plugins:install sfdx-changeset
-RUN sfdx  plugins:install sfdx-experiences-plugin
+RUN echo 'y' | sfdx  plugins:install sfpowerkit
+RUN echo 'y' | sfdx  plugins:install shane-sfdx-plugins
+RUN echo 'y' | sfdx  plugins:install @salesforce/sfdx-scanner
+RUN echo 'y' | sfdx  plugins:install sfdx-changeset
+RUN echo 'y' | sfdx  plugins:install sfdx-experiences-plugin
